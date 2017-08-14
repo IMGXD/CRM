@@ -1,0 +1,31 @@
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <!-- 使用列别名替换列名 默认：true -->
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 使用jdbc的getGeneratedKeys 获取数据库自增主键值 -->
+        <setting name="useGeneratedKeys" value="true"/>
+    </settings>
+    <typeAliases>
+        <package name="com.crm.po"/>
+        <package name="com.crm.vo"/>
+        <package name="com.crm.dto"/>
+    </typeAliases>
+
+    <plugins>
+        <!-- 分页插件配置 -->
+        <plugin interceptor="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
+            <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"/>
+        </plugin>
+    </plugins>
+
+    <!--<plugins>-->
+    <!--<plugin interceptor="com.github.pagehelper.PageHelper">-->
+    <!--<property name="dialect" value="mysql"/>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
+</configuration>
